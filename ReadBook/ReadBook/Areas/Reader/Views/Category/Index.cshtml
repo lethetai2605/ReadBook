@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ReadBook.Models.Books>
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<form asp-action="Index" method="post">
+    @foreach (var category in ViewBag.listCategory)
+    {
+        <button type="submit" class="btn btn-outline-info" asp-route-id="@category.Id">@category.BookType</button>
+    }
+</form>
+<br />
+<br />
+    @foreach (var item in Model)
+    {
+        <br />
+        <a asp-action="Read" asp-controller="Home" asp-route-id="@item.Id" class="text-info" style="font-size: 18.72px"><i class="fas fa-book fa-sm"></i> @item.Name</a>
+    }
+
+@*<form asp-action="Index" method="post">
+    @foreach (var item in Model)
+    {
+        <button type="submit" class="btn btn-outline-info" asp-route-id="@item.BookType.Id">@item.Name</button>
+        <h2>@item.Name </h2>
+    }
+</form>*@

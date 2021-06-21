@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ReadBook.Models.Books>
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Book List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Add New Book</a>
+    </div>
+</div>
+<div>
+    <table class="table table-striped border" id="myTable">
+        <thead>
+            <tr class="table-info">
+                <th>
+                    @Html.DisplayNameFor(c => c.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.Substance)
+                <th>
+                    @Html.DisplayNameFor(c => c.BookType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.SpecialTag)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Name</td>
+                @if (item.Substance.Length > 30)
+                {
+                    <td>@item.Substance.Substring(0, 30) ...</td>
+                }
+                else
+                {
+                    <td>@item.Substance</td>
+                }
+                <td>@item.BookType.BookType</td>
+                <td>@item.SpecialTag.SpecialTag</td>
+                <td>
+                    <partial name="_ButtonPartial" model="@item.Id" />
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
+}

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ReadBook.Models.Works>
+@{
+    ViewData["Title"] = "Infor";
+}
+<br />
+<br />
+<h3 class="text-info">@ViewBag.authorName</h3>
+<h5>(@ViewBag.authorDob)</h5>
+<br />
+<p>@ViewBag.infor</p>
+<br />
+<br />
+<h4>Một số tác phẩm tiêu biểu</h4>
+@foreach (var item in Model)
+{
+    <br />
+    <a asp-action="Read" asp-controller="Home" asp-route-id="@item.Book.Id" class="text-info" style="font-size: 18.72px"><i class="fas fa-book fa-sm"></i> @item.Book.Name</a>
+}
+@*<h3 class="text-info">@Model.Name</h3>
+    <h5>(@Model.Dob)</h5>
+    <br />
+    <p>@Model.Infor</p>*@
+
+
+
+
+

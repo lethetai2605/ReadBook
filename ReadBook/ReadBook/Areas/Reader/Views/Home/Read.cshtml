@@ -1,0 +1,19 @@
+﻿@model ReadBook.Models.Books
+@{
+    ViewData["Title"] = "Read";
+}
+<link href="~/css/substance.css" rel="stylesheet" type="text/css" />
+<br />
+<br />
+<h2 class="text-info">@Model.Name</h2>
+<textarea asp-for="Substance" readonly class="form-control" rows="19"></textarea>
+<br />
+@*<div class="col-6 text-right"><a asp-action="Index" class="btn btn-success">Back to List</a></div>*@
+<div class="row">
+    <div class="col-6">
+        @*<h2 class="text-info">Book Type List</h2>*@
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</div>
